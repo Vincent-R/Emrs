@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+    <button id="insertDoctor">Insert Doctor</button>
+    <br>
+    <br>
+    <button id="getAllDoctor">Get All Doctor</button>
+    <br>
+    <br>
+    <button id="getAllDoctorIdAndName">Get All Doctor Id And Name</button>
+    <br>
+    <br>
+    <button id="deleteDoctorById">Delete Doctor By Id</button>
+    <br>
+    <br>
+    <button id="checkLogin">Check Login</button>&nbsp;
+    <input type="text" id="phoneOrEmail" placeholder="Phone Or Email">&nbsp;
+    <input type="text" id="password" placeholder="Password">
+    <br>
+    <br>
+    <button id="getEmptyRecord">Get Empty Record</button>
+    <br>
+    <br>
+    <button id="getIndex">Get Index</button>
+    <br>
+    <br>
+    <button id="insertRecord">Insert Record</button>
+    <br>
+    <br>
+    <button id="getAllRecords">Get All Records</button>
+    <br>
+    <br>
+    <button id="getRecordById">Get Record By Id</button>
+    <br>
+    <br>
+</body>
+<script>
+    var basic_url = 'http://localhost:8080/';
+
+    $('#getRecordById').click(function () {
+        var recordId = '59e5e8d0599b273368aea4da';
+        $.ajax({
+            url: basic_url + "record/getRecordById",
+            type: 'post',
+            dataType: 'json',
+            data: { "recordId": recordId },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+
+    $('#getAllRecords').click(function () {
+        $.ajax({
+            url: basic_url + "record/getAllRecords",
+            type: 'post',
+            dataType: 'json',
+            // data: { "doctor": JSON.stringify(doctor) },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+    
+
+    $('#insertRecord').click(function () {
+        var record = {
+            "basicInfo": {
+                "admissionNum": "1234567890",
+                "bedNum": "A楼310室10号床",
+                "doctorId": "",
+                "recorderId": "",
+                "name": "李鹏",
+                "medicalCardNum": "A32620985",
+                "idNum": "42063019880722040",
+                "cellphone1": "15424765412",
+                "cellphone2": "17754234489",
+                "telephone": "027-87563354",
+                "gender": "0",
+                "nationality": "汉族",
+                "birthProvince": "湖北省",
+                "birthCity": "武汉市",
+                "birthday": "1990-06-01",
+                "profession": "教师",
+                "addressProvince": "湖北省",
+                "addressCity": "武汉市",
+                "addressArea": "洪山区",
+                "addressTown": "珞南街道",
+                "address": "湖北省武汉市洪山区南湖山庄20栋3单元"
+            },
+            "historyOfPresentIllness": {
+                "careCauses": "1,2,3,4,5,6",
+                "careCauseOthers": "气促",
+                "chestPain": {
+                    "timesPerDay": "1",
+                    "timesPerWeek": "7",
+                    "timesPerMonth": "30",
+                    "timesPerYear": "365",
+                    "onsetTime": "2,4,5",
+                    "onsetTimeOthers": "凌晨",
+                    "diseaseBodyParts": [{
+                        "bodyPartName": "1",
+                        "bodyPartNameOthers": "",
+                        "qualityOfPain": "1",
+                        "qualityOfPainOthers": "",
+                        "durationOfPain": "2",
+                        "durationOfPainOthers": "",
+                        "painDegree": "2"
+                    },
+                    {
+                        "bodyPartName": "10",
+                        "bodyPartNameOthers": "其他部位",
+                        "qualityOfPain": "13",
+                        "qualityOfPainOthers": "其他性质",
+                        "durationOfPain": "6",
+                        "durationOfPainOthers": "其他持续时间",
+                        "painDegree": "3"
+                    }
+                    ],
+                    "relievingFactors": "2",
+                    "relievingFactorsOthers": "",
+                    "precipitatingFactors": "2,4,11",
+                    "precipitatingFactorsOthers": "其他诱因",
+                    "radiationSites": "3,5,7",
+                    "radiationSitesOthers": "其他放射部位",
+                    "simultaneousPhenomena": "3,5,9,12,18,21",
+                    "simultaneousPhenomenonOthers": "其他伴随症状"
+                },
+                "chestDistress": {
+                    "timesPerDay": "1",
+                    "timesPerWeek": "7",
+                    "timesPerMonth": "30",
+                    "timesPerYear": "365",
+                    "onsetTime": "2,4,5",
+                    "onsetTimeOthers": "凌晨",
+                    "diseaseBodyParts": [{
+                        "bodyPartName": "1",
+                        "bodyPartNameOthers": "",
+                        "qualityOfPain": "1",
+                        "qualityOfPainOthers": "",
+                        "durationOfPain": "2",
+                        "durationOfPainOthers": "",
+                        "painDegree": "2"
+                    },
+                    {
+                        "bodyPartName": "10",
+                        "bodyPartNameOthers": "其他部位",
+                        "qualityOfPain": "13",
+                        "qualityOfPainOthers": "其他性质",
+                        "durationOfPain": "6",
+                        "durationOfPainOthers": "其他持续时间",
+                        "painDegree": "3"
+                    }
+                    ],
+                    "relievingFactors": "2",
+                    "relievingFactorsOthers": "",
+                    "precipitatingFactors": "2,4,11",
+                    "precipitatingFactorsOthers": "其他诱因",
+                    "radiationSites": "3,5,7",
+                    "radiationSitesOthers": "其他放射部位",
+                    "simultaneousPhenomena": "3,5,9,12,18,21",
+                    "simultaneousPhenomenonOthers": "其他伴随症状"
+                },
+                "dyspnea": {
+                    "timesPerDay": "1",
+                    "timesPerWeek": "7",
+                    "timesPerMonth": "30",
+                    "timesPerYear": "365",
+                    "onsetTime": "2,4,5",
+                    "onsetTimeOthers": "凌晨"
+                },
+                "palpitation": {
+                    "timesPerDay": "1",
+                    "timesPerWeek": "7",
+                    "timesPerMonth": "30",
+                    "timesPerYear": "365",
+                    "onsetTime": "2,4,5",
+                    "onsetTimeOthers": "凌晨"
+                },
+                "abnormalEcg": {
+                    "timesPerDay": "1",
+                    "timesPerWeek": "7",
+                    "timesPerMonth": "30",
+                    "timesPerYear": "365",
+                    "onsetTime": "2,4,5",
+                    "onsetTimeOthers": "凌晨"
+                }
+            },
+            "anamnesis": {
+                "isLipidAbnormality": "1",
+                "lipidAbnormalityType": "2",
+                "lipidAbnormalityDuration": "3",
+                "isLipidAbnormalityUnderTreatment": "2",
+                "lipidAbnormalityDrugName": "辛伐他丁",
+                "isEssentialHypertension": "1",
+                "essentialHypertensionDuration": "5",
+                "maximumValue": "170/100",
+                "ordinaryValue": "150/95",
+                "isEssentialHypertensionUnderTreatment": "2",
+                "essentialHypertensionDrugName": "美托洛尔",
+                "isDysglycemia": "1",
+                "dysglycemiaDuration": "1",
+                "dysglycemiaType": "1",
+                "isDiabetesMellitus": "1",
+                "isDiabetesMellitusUnderTreatment": "2",
+                "diabetesMellitusTreatmentMethod": "1,2,3",
+                "diabetesMellitusOralDrugName": "达美康",
+                "isGout": "1",
+                "goutDuration": "3",
+                "serumUricAcidLevel": "442",
+                "isRenalInsufficiency": "1",
+                "renalInsufficiencyDuration": "1",
+                "maximumCr": "186",
+                "recentCr": "160",
+                "renalInsufficiencyEtiology": "高血压",
+                "isOldMyocardialInfarction": "1",
+                "oldMyocardialInfarctionOnsetTimeYear": "2017",
+                "oldMyocardialInfarctionOnsetTimeMonth": "3",
+                "oldMyocardialInfarctionOnsetFrequency": "5",
+                "oldMyocardialInfarctionLocation": "2,4,7",
+                "oldMyocardialInfarctionLocationOthers": "其他部位",
+                "isPciHistory": "1",
+                "isCabgHistory": "1",
+                "isCasGt50History": "1",
+                "isAtrialFibrillation": "1",
+                "isOtherHeartDiseaseHistory": "1",
+                "otherHeartDiseaseType": "2,4,8",
+                "otherHeartDiseaseTypeOthers": "心脏肿瘤",
+                "isDeepVenousThrombosis": "1",
+                "deepVenousThrombosisOnsetTimeYear": "2016",
+                "deepVenousThrombosisOnsetTimeMonth": "12",
+                "deepVenousThrombosisInducements": "2,4",
+                "deepVenousThrombosisSymptoms": "1,4",
+                "deepVenousThrombosisDiagnosisResult": "2",
+                "isOldIschemicStroke": "1",
+                "oldIschemicStrokeTypes": [{
+                    "typeName": "3",
+                    "onsetTimeYear": "2016",
+                    "onsetTimeMonth": "8",
+                    "onsetFrequency": "3"
+                },
+                {
+                    "typeName": "3",
+                    "onsetTimeYear": "2015",
+                    "onsetTimeMonth": "5",
+                    "onsetFrequency": "5"
+                }
+                ],
+                "isVascularDiseases": "1",
+                "vascularDiseasesTypes": "2,3",
+                "isHemorrhage": "1",
+                "hemorrhageTypes": [{
+                    "typeName": "2",
+                    "onsetTime": "2015－10",
+                    "onsetFrequency": "4"
+                },
+                {
+                    "typeName": "4",
+                    "onsetTime": "2015－8",
+                    "onsetFrequency": "3"
+                }
+                ],
+                "isBleeding": "1",
+                "bleedingCauses": [{
+                    "cause": "2",
+                    "onsetTime": "2016-08"
+                },
+                {
+                    "cause": "4",
+                    "onsetTime": "2016-03"
+                }
+                ]
+            },
+            "riskFactors": {
+                "isSomking": "1",
+                "smokingDuration": "10",
+                "piecesPerDay": "3",
+                "cigretteType": "2,4,5",
+                "cigretteTypeOthers": "斗烟",
+                "isSmokingCessation": "1",
+                "smokingCessationDuration": "3",
+                "isDrinking": "1",
+                "drinkingDuration": "15",
+                "talesPerDay": "2",
+                "wineType": "1,2,5",
+                "wineTypeOthers": "香槟",
+                "isTemperance": "1",
+                "temperanceDuration": "2",
+                "drinkingAmount": "2",
+                "paddyPotato": "2",
+                "grainMixedBeans": "1",
+                "potato": "1",
+                "vegetables": "2",
+                "fruits": "3",
+                "livestockMeat": "1",
+                "aquaticProducts": "2",
+                "eggs": "2",
+                "milkProducts": "2",
+                "soybeansNuts": "1",
+                "salt": "3",
+                "sugar": "2",
+                "oil": "1",
+                "fatMeat": "100",
+                "visceral": "20",
+                "bloodType": "3",
+                "isLongtermPsychologicalStress": "1",
+                "isDepression": "1",
+                "exerciseType": "2",
+                "exerciseDuration": "2",
+                "exerciseMode": "1,3",
+                "exerciseModeOthers": "游泳",
+                "isCentralObesity": "1",
+                "centralObesityDuration": "5",
+                "height": "175",
+                "weight": "80",
+                "waistline": "75",
+                "neckCircumference": "43",
+                "hipline": "87"
+            },
+            "familyHistory": {
+                "prematureChd": {
+                    "isPrematureChd": "",
+                    "onsetMembers": [{
+                        "onsetMember": "1",
+                        "gender": "0",
+                        "onsetAge": "50",
+                        "prematureChdType": "1"
+                    },
+                    {
+                        "onsetMember": "2",
+                        "gender": "1",
+                        "onsetAge": "52",
+                        "prematureChdType": "2"
+                    }
+                    ]
+                },
+                "myocardialInfarction": {
+                    "ismyocardialInfarction": "",
+                    "onsetMembers": [{
+                        "onsetMember": "1",
+                        "gender": "0",
+                        "onsetAge": "50"
+                    },
+                    {
+                        "onsetMember": "2",
+                        "gender": "1",
+                        "onsetAge": "52"
+                    }
+                    ]
+                },
+                "suddenDeath": {
+                    "issuddenDeath": "",
+                    "onsetMembers": [{
+                        "onsetMember": "1",
+                        "gender": "0",
+                        "onsetAge": "50",
+                        "etiology": "1",
+                        "etiologyOthers": ""
+                    },
+                    {
+                        "onsetMember": "2",
+                        "gender": "1",
+                        "onsetAge": "52",
+                        "etiology": "2",
+                        "etiologyOthers": ""
+                    }
+                    ]
+                },
+                "ischemicStroke": {
+                    "isIschemicStroke": "",
+                    "onsetMembers": [{
+                        "onsetMember": "1",
+                        "gender": "0",
+                        "onsetAge": "50"
+                    },
+                    {
+                        "onsetMember": "2",
+                        "gender": "1",
+                        "onsetAge": "52"
+                    }
+                    ]
+                },
+                "hemorrhagicStroke": {
+                    "isHemorrhagicStroke": "",
+                    "onsetMembers": [{
+                        "onsetMember": "1",
+                        "gender": "0",
+                        "onsetAge": "50"
+                    },
+                    {
+                        "onsetMember": "2",
+                        "gender": "1",
+                        "onsetAge": "52"
+                    }
+                    ]
+                }
+            },
+            "physicalExamination": {
+                "bodyTemperature": "37.5",
+                "respiratoryRate": "75",
+                "isBreathSoundsNormal": "0",
+                "breathSoundsType": "",
+                "breathSoundsPart": "",
+                "isLungWetRales": "1",
+                "lungWetRalesRange": "2",
+                "lungWetRalesPart": "2",
+                "heartRate": "90",
+                "cardiacRhythm": "3",
+                "heartSoundS1Result": "3",
+                "isS3S4GallopRhythm": "1",
+                "pulse": "58",
+                "bloodPressure": "134/84",
+                "isEarLobeLongitudinalCrack": "1",
+                "earLobeLongitudinalCrackParts": "1,2",
+                "isSkinYellowPigmentTumor": "1",
+                "skinYellowPigmentTumorParts": "1,3,6",
+                "isAlopecia": "1",
+                "alopeciaParts": "1,2"
+            },
+            "routineExamination": {
+                "TC": "4.23",
+                "TG": "1.7",
+                "LDL": "2.24",
+                "HDL": "2.69",
+                "notHDL": "1.540",
+                "bloodGlucoseFasting": "3.76",
+                "isSerumMyocardialNecrosisMarkers": "1",
+                "myocardialCK": "160",
+                "myocardialCKMB": "32",
+                "myocardialCTnI": "0.6",
+                "myocardialMb": "80",
+                "isInflammatoryMarkers": "1",
+                "inflammationHsCRP": "2.3",
+                "inflammationIL6": "16.20",
+                "inflammationIL1Beta": "90.51",
+                "inflammationTNFAlpha": "7.1",
+                "heartFailureNTproBNP": "172",
+                "electrolyteNa": "150",
+                "electrolyteK": "4.7",
+                "electrolyteCa": "2.25",
+                "electrolyteCl": "100",
+                "isLiverFunction": "1",
+                "totalProtein": "78",
+                "albumin": "50",
+                "totalBilirubin": "15.2",
+                "directBilirubin": "5.7",
+                "indirectBilirubin": "10.2",
+                "ALT": "21",
+                "AST": "33",
+                "isRenalFunction": "1",
+                "Cr": "100",
+                "UA": "213",
+                "BUN": "5.6",
+                "GFR": "150",
+                "isHepatorenalDisease": "1",
+                "APTT": "19.1",
+                "PT": "11.2",
+                "TT": "10.8",
+                "FIB": "2.71",
+                "dDimer": "398",
+                "INR": "2.3",
+                "isINRStable": "1",
+                "redBloodCellCount": "4.3",
+                "redBloodCellSpecificVolume": "35",
+                "HGB": "150",
+                "leukocyteCount": "5.66",
+                "neutrophil": "1.6",
+                "eosinophil": "0.45",
+                "basophil": "0.08",
+                "lymphocyte": "3.2",
+                "monocyte": "0.33",
+                "isQualitativePlatelet": "1",
+                "plateletCountPLT": "157",
+                "MPV": "10.2",
+                "PDW": "12.9",
+                "PARADP": "69",
+                "PAREpinephrine": "70",
+                "PARArachidonicAcid": "72",
+                "PARCollagen": "73",
+                "PARRistocetin": "68"
+            },
+            "specialExamination": {
+                "ecg": {
+                    "pathologicalQWave": {
+                        "isPathologicalQWave": "1",
+                        "qWaveLeads": "2,3,5,14"
+                    },
+                    "stSegmentChange": {
+                        "isStSegmentChange": "1",
+                        "stSegmentDepression": {
+                            "isStSegmentDepression": "1",
+                            "changeDetail": {
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.06",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.06",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.06",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.06",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.06",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.06",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.06",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.06",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.06",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.06",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.06",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.06",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.06",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.06",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.06"
+                            }
+                        },
+                        "stSegmentElevation": {
+                            "isStSegmentElevation": "0",
+                            "changeDetail": {
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.06",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.06",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.06",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.06",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.06",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.06",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.06",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.06",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.06",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.06",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.06",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.06",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.06",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.06",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.06"
+                            }
+                        }
+                    },
+                    "tWaveChange": {
+                        "isTWaveChange": "1",
+                        "changeDetail": {
+                            "isLeadI": "1",
+                            "leadIAmplitude": "0.06",
+                            "leadIWaveforms": "1",
+                            "isLeadII": "1",
+                            "leadIIAmplitude": "0.06",
+                            "leadIIWaveforms": "2",
+                            "isLeadIII": "1",
+                            "leadIIIAmplitude": "0.06",
+                            "leadIIIWaveforms": "3",
+                            "isLeadAVF": "1",
+                            "leadAVFAmplitude": "0.06",
+                            "leadAVFWaveforms": "5",
+                            "isLeadAVL": "1",
+                            "leadAVLAmplitude": "0.06",
+                            "leadAVLWaveforms": "4",
+                            "isLeadAVR": "1",
+                            "leadAVRAmplitude": "0.06",
+                            "leadAVRWaveforms": "3",
+                            "isLeadV1": "1",
+                            "leadV1Amplitude": "0.06",
+                            "leadV1Waveforms": "1",
+                            "isLeadV2": "1",
+                            "leadV2Amplitude": "0.06",
+                            "leadV2Waveforms": "2",
+                            "isLeadV3": "1",
+                            "leadV3Amplitude": "0.06",
+                            "leadV3Waveforms": "2",
+                            "isLeadV4": "1",
+                            "leadV4Amplitude": "0.06",
+                            "leadV4Waveforms": "3",
+                            "isLeadV5": "1",
+                            "leadV5Amplitude": "0.06",
+                            "leadV5Waveforms": "4",
+                            "isLeadV6": "1",
+                            "leadV6Amplitude": "0.06",
+                            "leadV6Waveforms": "4",
+                            "isLeadV7": "1",
+                            "leadV7Amplitude": "0.06",
+                            "leadV7Waveforms": "5",
+                            "isLeadV8": "1",
+                            "leadV8Amplitude": "0.06",
+                            "leadV8Waveforms": "5",
+                            "isLeadV9": "1",
+                            "leadV9Amplitude": "0.06",
+                            "leadV9Waveforms": "4"
+                        }
+                    },
+                    "arrhythmia": {
+                        "isArrhythmia": "1",
+                        "arrhythmiaTypes": "",
+                        "arrhythmiaTypeOthers": ""
+                    },
+                    "isResultNormal": "0",
+                    "findings": "存在ST段异常，疑似冠心病"
+                },
+                "exerciseEcg": {
+                    "isExerciseAngina": "1",
+                    "exerciseDuration": "20",
+                    "maximalBloodPressure": "170/96",
+                    "minimalBloodPressure": "150/92",
+                    "stSegmentChange": {
+                        "isStSegmentChange": "1",
+                        "stSegmentDepression": {
+                            "isStSegmentDepression": "1",
+                            "duration": "2",
+                            "changeDetail": {
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.06",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.06",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.06",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.06",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.06",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.06",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.06",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.06",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.06",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.06",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.06",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.06",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.06",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.06",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.06"
+                            }
+                        },
+                        "stSegmentElevation": {
+                            "isStSegmentElevation": "0",
+                            "duration": "2",
+                            "changeDetail": {
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.06",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.06",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.06",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.06",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.06",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.06",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.06",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.06",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.06",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.06",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.06",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.06",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.06",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.06",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.06"
+                            }
+                        }
+                    },
+                    "tWaveChange": {
+                        "isTWaveChange": "1",
+                        "duration": "2",
+                        "changeDetail": {
+                            "isLeadI": "1",
+                            "leadIAmplitude": "0.06",
+                            "leadIWaveforms": "1",
+                            "isLeadII": "1",
+                            "leadIIAmplitude": "0.06",
+                            "leadIIWaveforms": "2",
+                            "isLeadIII": "1",
+                            "leadIIIAmplitude": "0.06",
+                            "leadIIIWaveforms": "3",
+                            "isLeadAVF": "1",
+                            "leadAVFAmplitude": "0.06",
+                            "leadAVFWaveforms": "5",
+                            "isLeadAVL": "1",
+                            "leadAVLAmplitude": "0.06",
+                            "leadAVLWaveforms": "4",
+                            "isLeadAVR": "1",
+                            "leadAVRAmplitude": "0.06",
+                            "leadAVRWaveforms": "3",
+                            "isLeadV1": "1",
+                            "leadV1Amplitude": "0.06",
+                            "leadV1Waveforms": "1",
+                            "isLeadV2": "1",
+                            "leadV2Amplitude": "0.06",
+                            "leadV2Waveforms": "2",
+                            "isLeadV3": "1",
+                            "leadV3Amplitude": "0.06",
+                            "leadV3Waveforms": "2",
+                            "isLeadV4": "1",
+                            "leadV4Amplitude": "0.06",
+                            "leadV4Waveforms": "3",
+                            "isLeadV5": "1",
+                            "leadV5Amplitude": "0.06",
+                            "leadV5Waveforms": "4",
+                            "isLeadV6": "1",
+                            "leadV6Amplitude": "0.06",
+                            "leadV6Waveforms": "4",
+                            "isLeadV7": "1",
+                            "leadV7Amplitude": "0.06",
+                            "leadV7Waveforms": "5",
+                            "isLeadV8": "1",
+                            "leadV8Amplitude": "0.06",
+                            "leadV8Waveforms": "5",
+                            "isLeadV9": "1",
+                            "leadV9Amplitude": "0.06",
+                            "leadV9Waveforms": "4"
+                        }
+                    },
+                    "result": "4",
+                    "findings": "运动ECG出现st段改变和t波异常，结果呈阳性，疑似冠心病"
+                },
+                "holterEcg": {
+                    "totalHeartbeats": "118529",
+                    "averageHeartRate": "120",
+                    "maximalHeartRate": "140",
+                    "maximalHeartRateOccurrenceTime": "12:00",
+                    "minimalHeartRate": "100",
+                    "minimalHeartRateOccurrenceTime": "2:00",
+                    "arrhythmia": {
+                        "isArrhythmia": "1",
+                        "frequentness": "5",
+                        "totalAbnormalHeartbeats": "2001",
+                        "arrhythmiaTypes": [{
+                            "arrhythmiaType": "1",
+                            "arrhythmiaTypeOthers": "",
+                            "duration": "5"
+                        },
+                        {
+                            "arrhythmiaType": "2",
+                            "arrhythmiaTypeOthers": "",
+                            "duration": "4"
+                        },
+                        {
+                            "arrhythmiaType": "11",
+                            "arrhythmiaTypeOthers": "其他类型",
+                            "duration": "6"
+                        }
+                        ]
+                    },
+                    "pathologicalQWave": {
+                        "isPathologicalQWave": "1",
+                        "frequentness": "3",
+                        "qWaveLeadsDetail": [{
+                            "duration": "8:00",
+                            "qWaveLeads": "2,4,5"
+                        },
+                        {
+                            "duration": "9:00",
+                            "qWaveLeads": "5,10,14"
+                        },
+                        {
+                            "duration": "10:00",
+                            "qWaveLeads": "3,11,13"
+                        }
+                        ]
+                    },
+                    "stSegmentChange": {
+                        "isStSegmentChange": "1",
+                        "stSegmentDepression": {
+                            "isStSegmentDepression": "1",
+                            "frequentness": "4",
+                            "changesDetail": [{
+                                "duration": "1",
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.05",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.05",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.05",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.05",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.05",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.05",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.05",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.05",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.05",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.05",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.05",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.05",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.05",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.05",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.05"
+                            },
+                            {
+                                "duration": "2",
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.05",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.05",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.05",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.05",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.05",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.05",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.05",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.05",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.05",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.05",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.05",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.05",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.05",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.05",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.05"
+                            }
+                            ]
+                        },
+                        "stSegmentElevation": {
+                            "isStSegmentElevation": "0",
+                            "frequentness": "3",
+                            "changesDetail": [{
+                                "duration": "1",
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.05",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.05",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.05",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.05",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.05",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.05",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.05",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.05",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.05",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.05",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.05",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.05",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.05",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.05",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.05"
+                            },
+                            {
+                                "duration": "2",
+                                "isLeadI": "1",
+                                "leadIAmplitude": "0.05",
+                                "isLeadII": "1",
+                                "leadIIAmplitude": "0.05",
+                                "isLeadIII": "1",
+                                "leadIIIAmplitude": "0.05",
+                                "isLeadAVF": "1",
+                                "leadAVFAmplitude": "0.05",
+                                "isLeadAVL": "1",
+                                "leadAVLAmplitude": "0.05",
+                                "isLeadAVR": "1",
+                                "leadAVRAmplitude": "0.05",
+                                "isLeadV1": "1",
+                                "leadV1Amplitude": "0.05",
+                                "isLeadV2": "1",
+                                "leadV2Amplitude": "0.05",
+                                "isLeadV3": "1",
+                                "leadV3Amplitude": "0.05",
+                                "isLeadV4": "1",
+                                "leadV4Amplitude": "0.05",
+                                "isLeadV5": "1",
+                                "leadV5Amplitude": "0.05",
+                                "isLeadV6": "1",
+                                "leadV6Amplitude": "0.05",
+                                "isLeadV7": "1",
+                                "leadV7Amplitude": "0.05",
+                                "isLeadV8": "1",
+                                "leadV8Amplitude": "0.05",
+                                "isLeadV9": "1",
+                                "leadV9Amplitude": "0.05"
+                            }
+                            ]
+                        }
+
+                    },
+                    "tWaveChange": {
+                        "isTWaveChange": "1",
+                        "frequentness": "2",
+                        "changesDetail": [{
+                            "duration": "2",
+                            "isLeadI": "1",
+                            "leadIAmplitude": "0.06",
+                            "leadIWaveforms": "1",
+                            "isLeadII": "1",
+                            "leadIIAmplitude": "0.06",
+                            "leadIIWaveforms": "2",
+                            "isLeadIII": "1",
+                            "leadIIIAmplitude": "0.06",
+                            "leadIIIWaveforms": "3",
+                            "isLeadAVF": "1",
+                            "leadAVFAmplitude": "0.06",
+                            "leadAVFWaveforms": "5",
+                            "isLeadAVL": "1",
+                            "leadAVLAmplitude": "0.06",
+                            "leadAVLWaveforms": "4",
+                            "isLeadAVR": "1",
+                            "leadAVRAmplitude": "0.06",
+                            "leadAVRWaveforms": "3",
+                            "isLeadV1": "1",
+                            "leadV1Amplitude": "0.06",
+                            "leadV1Waveforms": "1",
+                            "isLeadV2": "1",
+                            "leadV2Amplitude": "0.06",
+                            "leadV2Waveforms": "2",
+                            "isLeadV3": "1",
+                            "leadV3Amplitude": "0.06",
+                            "leadV3Waveforms": "2",
+                            "isLeadV4": "1",
+                            "leadV4Amplitude": "0.06",
+                            "leadV4Waveforms": "3",
+                            "isLeadV5": "1",
+                            "leadV5Amplitude": "0.06",
+                            "leadV5Waveforms": "4",
+                            "isLeadV6": "1",
+                            "leadV6Amplitude": "0.06",
+                            "leadV6Waveforms": "4",
+                            "isLeadV7": "1",
+                            "leadV7Amplitude": "0.06",
+                            "leadV7Waveforms": "5",
+                            "isLeadV8": "1",
+                            "leadV8Amplitude": "0.06",
+                            "leadV8Waveforms": "5",
+                            "isLeadV9": "1",
+                            "leadV9Amplitude": "0.06",
+                            "leadV9Waveforms": "4"
+                        },
+                        {
+                            "duration": "2",
+                            "isLeadI": "1",
+                            "leadIAmplitude": "0.06",
+                            "leadIWaveforms": "1",
+                            "isLeadII": "1",
+                            "leadIIAmplitude": "0.06",
+                            "leadIIWaveforms": "2",
+                            "isLeadIII": "1",
+                            "leadIIIAmplitude": "0.06",
+                            "leadIIIWaveforms": "3",
+                            "isLeadAVF": "1",
+                            "leadAVFAmplitude": "0.06",
+                            "leadAVFWaveforms": "5",
+                            "isLeadAVL": "1",
+                            "leadAVLAmplitude": "0.06",
+                            "leadAVLWaveforms": "4",
+                            "isLeadAVR": "1",
+                            "leadAVRAmplitude": "0.06",
+                            "leadAVRWaveforms": "3",
+                            "isLeadV1": "1",
+                            "leadV1Amplitude": "0.06",
+                            "leadV1Waveforms": "1",
+                            "isLeadV2": "1",
+                            "leadV2Amplitude": "0.06",
+                            "leadV2Waveforms": "2",
+                            "isLeadV3": "1",
+                            "leadV3Amplitude": "0.06",
+                            "leadV3Waveforms": "2",
+                            "isLeadV4": "1",
+                            "leadV4Amplitude": "0.06",
+                            "leadV4Waveforms": "3",
+                            "isLeadV5": "1",
+                            "leadV5Amplitude": "0.06",
+                            "leadV5Waveforms": "4",
+                            "isLeadV6": "1",
+                            "leadV6Amplitude": "0.06",
+                            "leadV6Waveforms": "4",
+                            "isLeadV7": "1",
+                            "leadV7Amplitude": "0.06",
+                            "leadV7Waveforms": "5",
+                            "isLeadV8": "1",
+                            "leadV8Amplitude": "0.06",
+                            "leadV8Waveforms": "5",
+                            "isLeadV9": "1",
+                            "leadV9Amplitude": "0.06",
+                            "leadV9Waveforms": "4"
+                        }
+                        ]
+                    },
+                    "findings": "24小时心电图出现st段和病理性Q波，疑似冠心病"
+                },
+                "ucgLVD": "46",
+                "ucgEDV": "81",
+                "ucgLVS": "10",
+                "ucgESV": "35",
+                "ucgLAD": "25",
+                "ucgLVPW": "10",
+                "ucgIVST": "10.5",
+                "isLVEFLtFortyPercent": "1",
+                "ucgEF": "0.65",
+                "ucgRatioEToA": "63",
+                "isLocalMotionAbnormality": "1",
+                "localMotionAbnormalityParts": "1,2,4",
+                "isVntricularAneurysm": "1",
+                "vntricularAneurysmParts": "2,4",
+                "isLeftVentricularThrombosis": "1",
+                "leftVentricularThrombosisParts": "2,3",
+                "ucgFindings": "心脏大小和功能存在异常",
+                "pciNum": "103",
+                "pciDate": "2016-10-11",
+                "pciType": "3",
+                "pciThrombolysisInterval": "20",
+                "pciOnsetIntervalDay": "1",
+                "pciOnsetIntervalHour": "10",
+                "stayTimeCCU": "60",
+                "stayTimeConduitRoom": "180",
+                "stayTimeEmergencyCall": "20",
+                "stayTimePrehospital": "30",
+                "contrastMedia": "1,4,5",
+                "contrastMediaOthers": "碘普罗胺",
+                "coronaryDistributionType": "1",
+                "isCoronaryMalformations": "1",
+                "isGrade3Lesions": "1",
+                "isBloodFlowTIMIGrade0to2": "1",
+                "isCTO": "1",
+                "isCollateralCirculation": "1",
+                "pciPaths": "1,3",
+                "implantedBracketCountLAD": "1",
+                "implantedBracketCountLCX": "0",
+                "implantedBracketCountLM": "1",
+                "implantedBracketCountRCA": "1",
+                "segmentalLesions": [{
+                    "num": "4",
+                    "stenosis": "30",
+                    "length": "0.6",
+                    "shape": "1",
+                    "isCalcification": "0",
+                    "isOstialLesion": "1",
+                    "isThrombus": "1",
+                    "TIMIGrade": "2",
+                    "kindsOfLesions": "B",
+                    "pciGuidewire": "ACS Whisper0.014×190",
+                    "balloon": "Medtronic，Stormer1.5×15mm",
+                    "stent": "Cordis BX Sonic3.0×33mm"
+                },
+                {
+                    "num": "14",
+                    "stenosis": "35",
+                    "length": "0.5",
+                    "shape": "2",
+                    "isCalcification": "0",
+                    "isOstial_lesion": "1",
+                    "isThrombus": "1",
+                    "TIMIGrade": "2",
+                    "kindsOfLesions": "A",
+                    "pciGuidewire": "ACS Whisper0.014×190",
+                    "balloon": "Medtronic，Stormer1.5×15mm",
+                    "stent": "Cordis BX Sonic3.0×33mm"
+                }
+                ]
+            },
+            "admissionDiagnosis": {
+                "isMyocardialInfarction": "1",
+                "myocardialInfarctionType": "急性",
+                "myocardialInfarctionPart": "前壁",
+                "isAngina": "",
+                "anginaType": "",
+                "anginaCcs": "",
+                "isCoronaryMicrovascularDisease": "1",
+                "isSilentMyocardialIschemia": "1",
+                "isIschemicCardiomyopathy": "1",
+                "isSuddenCoronaryDeath": "1",
+                "isChestPainOfUnknownOrigin": "1",
+                "isDiagnosisOthers": "1",
+                "diagnosisOthers": "主动脉夹层"
+            },
+            "dischargeDiagnosis": {
+                "isMyocardialInfarction": "1",
+                "myocardialInfarctionType": "急性",
+                "myocardialInfarctionPart": "前壁",
+                "isAngina": "",
+                "anginaType": "",
+                "anginaCcs": "",
+                "isCoronaryMicrovascularDisease": "1",
+                "isSilentMyocardialIschemia": "1",
+                "isIschemicCardiomyopathy": "1",
+                "isSuddenCoronaryDeath": "1",
+                "isChestPainOfUnknownOrigin": "1",
+                "isDiagnosisOthers": "1",
+                "diagnosisOthers": "主动脉夹层"
+            }
+        };
+        // $.ajax({
+        //     url: basic_url + "record/insertRecord",
+        //     type: 'post',
+        //     dataType: 'json',
+        //     data: { "record": JSON.stringify(record) },
+        //     // scriptCharset: 'utf-8',
+        //     timeout: 30000,
+        //     success: function (data) {
+        //         console.log(data)
+        //     }
+        // })
+    });
+
+
+    $('#getIndex').click(function () {
+        $.ajax({
+            url: basic_url + "index/getIndex",
+            type: 'post',
+            dataType: 'json',
+            // data: { "doctor": JSON.stringify(doctor) },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+
+    $('#getEmptyRecord').click(function () {
+        $.ajax({
+            url: basic_url + "record/getEmptyRecord",
+            type: 'post',
+            dataType: 'json',
+            // data: { "doctor": JSON.stringify(doctor) },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+
+
+    $('#insertDoctor').click(function () {
+        var doctor = {
+            name: 'lin',
+            idNumber: '123456',
+            jobNumber: '123456',
+            jobTitle: '主治医师',
+            hospitalId: '123456',
+            password: '123456',
+            email: '321@123.com',
+            phoneNumber: '123456'
+        };
+        $.ajax({
+            url: basic_url + "user/insertDoctor",
+            type: 'post',
+            dataType: 'json',
+            data: { "doctor": JSON.stringify(doctor) },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+
+    $('#getAllDoctor').click(function () {
+        $.ajax({
+            url: basic_url + "user/getAllDoctor",
+            type: 'post',
+            dataType: 'json',
+            // data:{"doctor":doctor},
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+
+    $('#getAllDoctorIdAndName').click(function () {
+        $.ajax({
+            url: basic_url + "user/getAllDoctorIdAndName",
+            type: 'post',
+            dataType: 'json',
+            // data:{"doctor":doctor},
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+
+    $('#deleteDoctorById').click(function () {
+        var doctorId = '59e208202c373a0cb8e547c3';
+        $.ajax({
+            url: basic_url + "user/deleteDoctorById",
+            type: 'post',
+            dataType: 'json',
+            data: { "doctorId": doctorId },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+
+    $('#checkLogin').click(function () {
+        var phoneOrEmail = $('#phoneOrEmail').val();
+        var password = $('#password').val();
+        $.ajax({
+            url: basic_url + "user/checkLogin",
+            type: 'post',
+            dataType: 'json',
+            data: { "phoneOrEmail": phoneOrEmail, "password": password },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
+</script>
+
+</html>
