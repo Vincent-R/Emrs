@@ -45,9 +45,26 @@
     <button id="getRecordById">Get Record By Id</button>
     <br>
     <br>
+    <button id="getPartOfAllRecords">Get Part Of All Records</button>
+    <br>
+    <br>
 </body>
 <script>
     var basic_url = 'http://localhost:8080/';
+
+    $('#getPartOfAllRecords').click(function () {
+        $.ajax({
+            url: basic_url + "record/getPartOfAllRecords",
+            type: 'post',
+            dataType: 'json',
+            // data: { "recordId": recordId },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    });
 
     $('#getRecordById').click(function () {
         var recordId = '59e5e8d0599b273368aea4da';

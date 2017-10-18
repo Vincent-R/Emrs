@@ -13,6 +13,7 @@ exports.insertRecord = function (record, callBack) {
     });
 }
 
+//查询所有的医疗记录
 exports.getAllRecords = function (callBack) {
     recordDao.find({}, function (err, docs) {
         //docs:查询到的数据
@@ -20,9 +21,18 @@ exports.getAllRecords = function (callBack) {
     });
 }
 
+//根据id查询病历记录
 exports.getRecordById = function (id, callBack) {
     recordDao.findById(id, function (err, doc) {
         //docs:查询到的数据
         callBack(err, doc);
+    });
+}
+
+//查询所有记录的部分字段
+exports.getPartOfRecords = function (callBack) {
+    recordDao.find({}, '_id basicInfo.name basicInfo.gender basicInfo.birthday', function (err, docs) {
+        //docs:查询到的数据
+        callBack(err, docs);
     });
 }

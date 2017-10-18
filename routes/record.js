@@ -86,5 +86,25 @@ router.post('/getRecordById', function (req, res, next) {
     });
 });
 
+/**
+ * 查询所有病历的部分记录
+ */
+router.post('/getPartOfAllRecords', function (req, res, next) {
+    recordServer.getPartOfRecords(function (err, docs) {
+        if (err) {
+            res.json({
+                status: false,
+                message: '获取病历记录失败！',
+                data: ''
+            });
+        } else {
+            res.json({
+                status: true,
+                message: '',
+                data: docs
+            });
+        }
+    });
+});
 
 module.exports = router; 
