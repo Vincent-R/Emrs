@@ -10,6 +10,7 @@ var idText = new Schema({
  * 定义emrsIndex对象模型
  */
 var emrsIndexSchema = new Schema({
+    genderList:[idText],
     alopeciaParts:[idText],
     anginaTypes:[idText],
     arrhythmiaTypes:[idText],
@@ -19,7 +20,7 @@ var emrsIndexSchema = new Schema({
     breathSoundsTypes: [idText],
     cardiacRhythms: [idText],
     cigretteTypes: [idText],
-    contrastMedias: [idText],
+    contrastMedia: [idText],
     coronaryDistributionTypes: [idText],
     deepVenousThrombosisDiagnosisResults: [idText],
     deepVenousThrombosisInducements: [idText],
@@ -44,6 +45,7 @@ var emrsIndexSchema = new Schema({
     diseasePainDegree: [idText],
     diseaseQualityOfPain: [idText],
     dysglycemiaTypes: [idText],
+    diabetesMellitusTypes: [idText],
     earLobeLongitudinalCrackParts: [idText],
     ecgResults: [idText],
     ecgWaveforms: [idText],
