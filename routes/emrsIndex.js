@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var emrsIndexDao = require('../server/emrsIndexServer');
+var emrsIndexServer = require('../server/emrsIndexServer');
 
 var emrsIndex = require('../resource/emrsIndex');
 
@@ -8,7 +8,7 @@ var emrsIndex = require('../resource/emrsIndex');
  * 获取索引记录
  */
 router.post('/getIndex', function (req, res, next) {
-    emrsIndexDao.getIndex(function (err, docs) {
+    emrsIndexServer.getIndex(function (err, docs) {
         if (err) {
             res.json({
                 status: false,
@@ -27,7 +27,7 @@ router.post('/getIndex', function (req, res, next) {
 
 router.post('/insertIndex', function (req, res, next) {
     console.log(emrsIndex);
-    emrsIndexDao.insertIndex(emrsIndex, function (err, docs) {
+    emrsIndexServer.insertIndex(emrsIndex, function (err, docs) {
         if (err) {
             res.json({
                 status: false,

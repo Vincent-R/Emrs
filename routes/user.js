@@ -2,12 +2,14 @@ var express = require('express');
 var router = express.Router();
 var doctorServer = require('../server/doctorServer');
 var _ = require('lodash');
+var md5=require("md5")  
 
 /**
  * 插入医生数据
  */
 router.post('/insertDoctor', function (req, res, next) {
   var doctor = JSON.parse(req.body.doctor);
+  doctor.password = md5(doctor.password)
   doctorServer.checkDoctorByPhoneAndEmail(doctor.phoneNumber, doctor.email, function (err, doc) {
     if (err) {
       res.json({
@@ -58,11 +60,11 @@ router.post('/checkLogin', function (req, res, next) {
       });
     } else {
       if (doc) {
-        if (_.isEqual(doc.password, password)) {
+        if (_.isEqual(doc.password, md5(password))) {
           res.json({
             status: true,
             message: '',
-            data: doc._id
+            data: doc
           });
         } else {
           res.json({

@@ -881,26 +881,26 @@
 
     $('#insertDoctor').click(function () {
         var doctor = {
-            name: 'lin',
-            idNumber: '123456',
-            jobNumber: '123456',
-            jobTitle: '主治医师',
-            hospitalId: '123456',
+            name: 'Dravid',
+            idNumber: '',
+            jobNumber: '',
+            jobTitle: '',
+            hospitalId: '',
             password: '123456',
-            email: '321@123.com',
+            email: 'Docbusayo@yahoo.com',
             phoneNumber: '123456'
         };
-        // $.ajax({
-        //     url: basic_url + "user/insertDoctor",
-        //     type: 'post',
-        //     dataType: 'json',
-        //     data: { "doctor": JSON.stringify(doctor) },
-        //     // scriptCharset: 'utf-8',
-        //     timeout: 30000,
-        //     success: function (data) {
-        //         console.log(data)
-        //     }
-        // })
+        $.ajax({
+            url: basic_url + "user/insertDoctor",
+            type: 'post',
+            dataType: 'json',
+            data: { "doctor": JSON.stringify(doctor) },
+            // scriptCharset: 'utf-8',
+            timeout: 30000,
+            success: function (data) {
+                console.log(data)
+            }
+        })
     });
 
     $('#getAllDoctor').click(function () {
