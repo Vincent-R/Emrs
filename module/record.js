@@ -56,7 +56,8 @@ var recordSchema = new Schema({
                     painDegree: SchemaTypes.String
                 }
             ],
-            relievingFactors: SchemaTypes.String,
+            relievingFactors: [SchemaTypes.String],
+            relievingDuration: SchemaTypes.String,
             relievingFactorsOthers: SchemaTypes.String,
             precipitatingFactors: [SchemaTypes.String],
             precipitatingFactorsOthers: SchemaTypes.String,
@@ -83,7 +84,8 @@ var recordSchema = new Schema({
                     painDegree: SchemaTypes.String
                 }
             ],
-            relievingFactors: SchemaTypes.String,
+            relievingFactors: [SchemaTypes.String],
+            relievingDuration: SchemaTypes.String,
             relievingFactorsOthers: SchemaTypes.String,
             precipitatingFactors: [SchemaTypes.String],
             precipitatingFactorsOthers: SchemaTypes.String,
