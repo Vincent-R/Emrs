@@ -9,6 +9,7 @@ var cors = require('cors');
 var index = require('./routes/index');
 
 var mongoose = require('./dbConnection');
+var checkUserLogin = require('./middlewares/checkLogin');
 
 var app = express();
 
@@ -38,6 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   console.log('自定义中间件');
 //   next();//调取下一个中间件，如果没有这个，http请求将被挂起，不会返回任何信息
 // });
+
+//app.use(checkUserLogin.checkUserLogin(req, res, next));
 
 //匹配http请求路由，如果匹配上就会执行中间件里的函数，最终会返回信息。
 //同时执行的函数中不会包含有next(),所以下面的404报错中间件将不会执行，如果没有匹配上，将会调用404中间件

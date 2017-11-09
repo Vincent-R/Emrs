@@ -3,7 +3,9 @@
         {
             "name": "emrs",
             "script": "bin/www",
-            "log_date_format": "YYYY-MM-DD HH:mm Z"
+            "log_date_format": "YYYY-MM-DD HH:mm Z",
+            "error_file" : "./logs/app-err.log",  // 错误日志路径
+            "out_file"   : "./logs/app-out.log"  // 普通日志路径
         }
     ]
 }
