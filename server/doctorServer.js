@@ -29,6 +29,14 @@ exports.getDoctorByPhoneOrEmail = function (phoneOrEmail, callBack) {
     });
 }
 
+//根据id查询医生
+exports.getDoctorById = function (id, callBack) {
+    doctorDao.findById(id, function (err, docs) {
+        //doc:查询到的数据
+        callBack(err, docs);
+    });
+}
+
 exports.getAllDoctor = function (callBack) {
     doctorDao.find({}, function (err, docs) {
         //docs:查询到的数据
