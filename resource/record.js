@@ -2,8 +2,8 @@ var emptyMr = {
     basicInfo: {
         admissionNum: "",
         bedNum: "",
-        doctor: {},
-        recorder: {},
+        doctor: null,
+        recorder: null,
         name: "",
         medicalCardNum: "",
         idNum: "",
