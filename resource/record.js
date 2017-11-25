@@ -409,7 +409,7 @@ var emptyMr = {
             vntricularAneurysmParts: [],
             isLeftVentricularThrombosis: "",
             leftVentricularThrombosisParts: [],
-            findings: "",
+            findings: ""
         },
         pci: {
             num: "",
