@@ -8,7 +8,7 @@ var md5=require("md5")
  * 插入新用户数据
  */
 router.post('/insertUser', function (req, res, next) {
-  var user = req.body.user;
+  var user = req.body;
   user.password = md5(user.password)
   userServer.checkUserByPhoneAndEmail(user.phoneNumber, user.email, function (err, doc) {
     if (err) {
