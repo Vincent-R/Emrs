@@ -1,35 +1,35 @@
 var express = require('express');
 var router = express.Router();
-var doctorServer = require('../server/doctorServer');
+var userServer = require('../server/userServer');
 var _ = require('lodash');
 var md5=require("md5")  
 
 /**
- * 插入医生数据
+ * 插入新用户数据
  */
-router.post('/insertDoctor', function (req, res, next) {
-  var doctor = JSON.parse(req.body.doctor);
-  doctor.password = md5(doctor.password)
-  doctorServer.checkDoctorByPhoneAndEmail(doctor.phoneNumber, doctor.email, function (err, doc) {
+router.post('/insertUser', function (req, res, next) {
+  var user = req.body.user;
+  user.password = md5(user.password)
+  userServer.checkUserByPhoneAndEmail(user.phoneNumber, user.email, function (err, doc) {
     if (err) {
       res.json({
         status: false,
-        message: '加入新医生失败！',
+        message: '加入新用户失败！',
         data: ''
       });
     } else {
       if (doc) {
         res.json({
           status: false,
-          message: '医生账户已经存在！',
+          message: '用户已经存在！',
           data: ''
         });
       } else {
-        doctorServer.insertDoctor(doctor, function (err) {
+        userServer.insertUser(user, function (err) {
           if (err) {
             res.json({
               status: false,
-              message: '加入新医生失败！',
+              message: '加入新用户失败！',
               data: ''
             });
           } else {
@@ -51,11 +51,11 @@ router.post('/insertDoctor', function (req, res, next) {
 router.post('/checkLogin', function (req, res, next) {
   var phoneOrEmail = req.body.phoneOrEmail;
   var password = req.body.password;
-  doctorServer.getDoctorByPhoneOrEmail(phoneOrEmail, function (err, doc) {
+  userServer.getUserByPhoneOrEmail(phoneOrEmail, function (err, doc) {
     if (err) {
       res.json({
         status: false,
-        message: '获取医生数据失败！',
+        message: '获取用户数据失败！',
         data: ''
       });
     } else {
@@ -88,7 +88,7 @@ router.post('/checkLogin', function (req, res, next) {
  * 查询获取所有医生
  */
 router.post('/getAllDoctor', function (req, res, next) {
-  doctorServer.getAllDoctor(function (err, docs) {
+  userServer.getAllDoctor(function (err, docs) {
     if (err) {
       res.json({
         status: false,
@@ -109,7 +109,7 @@ router.post('/getAllDoctor', function (req, res, next) {
  * 查询获取所有医生的id和name
  */
 router.post('/getAllDoctorIdAndName', function (req, res, next) {
-  doctorServer.getAllDoctorIdAndName(function (err, docs) {
+  userServer.getAllDoctorIdAndName(function (err, docs) {
     if (err) {
       res.json({
         status: false,
@@ -129,9 +129,9 @@ router.post('/getAllDoctorIdAndName', function (req, res, next) {
 /**
  * 根据id删除医生数据
  */
-router.post('/deleteDoctorById', function (req, res, next) {
+router.post('/deleteUserById', function (req, res, next) {
   var doctorId = req.body.doctorId;
-  doctorServer.deleteDoctorById(doctorId, function (err, doc) {
+  userServer.deleteUserById(doctorId, function (err, doc) {
     if (err) {
       res.json({
         status: false,

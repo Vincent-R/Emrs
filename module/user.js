@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 /**
- * 定义doctor对象模型
+ * 定义user对象模型
  */
-var doctorSchema = new Schema({
+var userSchema = new Schema({
     name: String,
     idNumber: String,
     jobNumber: String,
@@ -12,7 +12,8 @@ var doctorSchema = new Schema({
     hospitalId: String,
     password: String,
     email: String,
-    phoneNumber: String
+    phoneNumber: String,
+    type: String
 });
 
-module.exports = mongoose.model('doctor', doctorSchema);
+module.exports = mongoose.model('user', userSchema);

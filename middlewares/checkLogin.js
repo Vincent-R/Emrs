@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var doctorServer = require('../server/doctorServer');
+var doctorServer = require('../server/userServer');
 
 /**
  * 检查用户是否登录
