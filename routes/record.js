@@ -8,7 +8,7 @@ var recordServer = require('../server/recordServer');
  * 添加新的记录
  */
 router.post('/insertRecord', function (req, res, next) {
-    var record = JSON.parse(req.body.record);
+    var record = req.body.record;
     recordServer.insertRecord(record, function (err, doc) {
         if (err) {
             res.json({
