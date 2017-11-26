@@ -638,7 +638,9 @@ var recordSchema = new Schema({
         isChestPainOfUnknownOrigin: SchemaTypes.String,
         isDiagnosisOthers: SchemaTypes.String,
         diagnosisOthers: SchemaTypes.String
-    }
+    },
+    createTime: SchemaTypes.String,
+    lastUpdateTime: SchemaTypes.String
 });
 
 module.exports = mongoose.model('record', recordSchema);

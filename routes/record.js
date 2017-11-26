@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var emptyMr = require('../resource/record');
+var moment = require('moment');
 
 var recordServer = require('../server/recordServer');
 
@@ -8,7 +9,10 @@ var recordServer = require('../server/recordServer');
  * 添加新的记录
  */
 router.post('/insertRecord', function (req, res, next) {
-    var record = req.body;
+    var record = req.body.record;
+    let timeNow = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+    record.createTime = timeNow;
+    record.lastUpdateTime = timeNow;
     recordServer.insertRecord(record, function (err, doc) {
         if (err) {
             res.json({

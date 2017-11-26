@@ -467,7 +467,9 @@ var emptyMr = {
         isChestPainOfUnknownOrigin: "",
         isDiagnosisOthers: "",
         diagnosisOthers: ""
-    }
+    },
+    createTime: "",
+    lastUpdateTime: ""
 }
 
 module.exports = emptyMr;
