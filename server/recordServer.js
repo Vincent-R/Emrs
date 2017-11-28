@@ -31,7 +31,20 @@ exports.getRecordById = function (id, callBack) {
 
 //查询所有记录的部分字段
 exports.getPartOfRecords = function (callBack) {
-    recordDao.find({}, '_id basicInfo.name basicInfo.gender basicInfo.birthday', function (err, docs) {
+    recordDao.aggregate({$project: {
+        _id: 1, 
+        name: '$basicInfo.name',
+        gender: '$basicInfo.gender',
+        age: '$basicInfo.age',
+        telephone: '$basicInfo.telephone',
+        cellphone1: '$basicInfo.cellphone1',
+        cellphone2: '$basicInfo.cellphone2',
+        medicalCardNum: '$basicInfo.medicalCardNum',
+        idNum: '$basicInfo.idNum',
+        admissionNum: '$basicInfo.admissionNum',
+        bedNum: '$basicInfo.bedNum',
+        doctor: '$basicInfo.doctor'
+    }}, function (err, docs) {
         //docs:查询到的数据
         callBack(err, docs);
     });

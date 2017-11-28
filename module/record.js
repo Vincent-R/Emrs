@@ -13,11 +13,9 @@ var recordSchema = new Schema({
             _id: SchemaTypes.String,
             name: SchemaTypes.String
         },
-        recorder: {
-            _id: SchemaTypes.String,
-            name: SchemaTypes.String
-        },
+        recorder: SchemaTypes.String,
         name: SchemaTypes.String,
+        age: SchemaTypes.String,
         medicalCardNum: SchemaTypes.String,
         idNum: SchemaTypes.String,
         cellphone1: SchemaTypes.String,
