@@ -130,19 +130,15 @@ router.get('/getPartOfAllRecords', function (req, res, next) {
                         let next = page_index >= totalPage ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page=' + (parseInt(page_index) + 1) + '&per_page=' + page_size;
                         let prev = page_index == 1 ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page=' + (page_index - 1) + '&per_page=' + page_size;
                         res.json({
-                            status: true,
-                            message: '',
-                            data: {
-                                current_page: page_index,
-                                data: docs,
-                                from: (page_index - 1) * page_size + 1,
-                                to: recordTo > totalCount ? totalCount : recordTo,
-                                total: totalCount,
-                                per_page: page_size,
-                                last_page: totalPage,
-                                next_page_url: next,
-                                prev_page_url: prev
-                            }
+                            current_page: page_index,
+                            data: docs,
+                            from: (page_index - 1) * page_size + 1,
+                            to: recordTo > totalCount ? totalCount : recordTo,
+                            total: totalCount,
+                            per_page: page_size,
+                            last_page: totalPage,
+                            next_page_url: next,
+                            prev_page_url: prev
                         });
                     }
                 }
