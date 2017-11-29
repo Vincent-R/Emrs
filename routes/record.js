@@ -4,6 +4,7 @@ var emptyMr = require('../resource/record');
 var moment = require('moment');
 
 var recordServer = require('../server/recordServer');
+var server_url = require('../config').server_url;
 
 /**
  * 添加新的记录
@@ -90,22 +91,61 @@ router.post('/getRecord', function (req, res, next) {
 /**
  * 查询所有病历的部分记录
  */
-router.post('/getPartOfAllRecords', function (req, res, next) {
-    recordServer.getPartOfRecords(function (err, docs) {
-        if (err) {
+router.get('/getPartOfAllRecords', function (req, res, next) {
+    let page_size = req.query.page_size;
+    let page_index = req.query.page_index;
+    let sort_str = req.query.sort;
+    let sort_arr = sort_str.split('|');
+    let sort = {};
+    let sort_order = 1;
+    let totalCount = 0;
+    let totalPage = 0;
+    if ( sort_arr[1].toUpperCase() === 'DESC' ) {
+        sort_order = -1;
+    }
+    sort['basicInfo.' + sort_arr[0]] = sort_order;
+    recordServer.getAllRecordsCount(function (errone, count) {
+        if (errone) {
             res.json({
                 status: false,
                 message: '获取病历记录失败！',
                 data: ''
             });
         } else {
-            res.json({
-                status: true,
-                message: '',
-                data: docs
-            });
+            totalCount = count;
+            totalPage = parseInt(totalCount/parseInt(page_size) + 1);
+            recordServer.getPartOfRecords(sort, page_index-1, page_size,
+                function (err, docs) {
+                    if (err) {
+                        res.json({
+                            status: false,
+                            message: '获取病历记录失败！',
+                            data: ''
+                        });
+                    } else {
+                        let recordTo = page_index * page_size;
+                        let next = page_index >= totalPage ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page_index=' + (parseInt(page_index) + 1) + '&page_size=' + page_size;
+                        let prev = page_index == 1 ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page_index=' + (page_index - 1) + '&page_size=' + page_size;
+                        res.json({
+                            status: true,
+                            message: '',
+                            data: {
+                                current_page: page_index,
+                                data: docs,
+                                from: (page_index - 1) * page_size + 1,
+                                to: recordTo > totalCount ? totalCount : recordTo,
+                                total: totalCount,
+                                per_page: page_size,
+                                last_page: totalPage,
+                                next_page_url: next,
+                                prev_page_url: prev
+                            }
+                        });
+                    }
+                }
+            );
         }
-    });
+    }); 
 });
 
 module.exports = router; 
