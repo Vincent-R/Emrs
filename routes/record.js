@@ -94,16 +94,19 @@ router.post('/getRecord', function (req, res, next) {
 router.get('/getPartOfAllRecords', function (req, res, next) {
     let page_size = req.query.page_size;
     let page_index = req.query.page_index;
-    let sort_str = req.query.sort;
-    let sort_arr = sort_str.split('|');
-    let sort = {};
-    let sort_order = 1;
+    let sort_str = '';
+    let sort_order = 1;   
+    let sort = {};    
+    if (req.query.sort) {
+        sort_str = req.query.sort;
+        let sort_arr = sort_str.split('|');
+        if ( sort_arr[1].toUpperCase() === 'DESC' ) {
+            sort_order = -1;
+        }
+        sort['basicInfo.' + sort_arr[0]] = sort_order;
+    }
     let totalCount = 0;
     let totalPage = 0;
-    if ( sort_arr[1].toUpperCase() === 'DESC' ) {
-        sort_order = -1;
-    }
-    sort['basicInfo.' + sort_arr[0]] = sort_order;
     recordServer.getAllRecordsCount(function (errone, count) {
         if (errone) {
             res.json({
