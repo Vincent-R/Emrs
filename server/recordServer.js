@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 /**
  * 访问Record对象模型
  */
@@ -29,15 +31,40 @@ exports.getRecordById = function (id, callBack) {
     });
 }
 
+// //查询所有记录的部分字段
+// exports.getPartOfRecords = function (sort, page_index, page_size, callBack) {
+//     var query = recordDao.find({});
+//     query.select('_id basicInfo.name basicInfo.gender basicInfo.age basicInfo.telephone basicInfo.cellphone1 basicInfo.cellphone2 basicInfo.medicalCardNum basicInfo.idNum basicInfo.admissionNum basicInfo.bedNum basicInfo.doctor');
+//     query.sort(sort);
+//     query.skip(parseInt(page_index * page_size));
+//     query.limit(parseInt(page_size));
+//     query.exec(function (err, docs) {
+//         callBack(err, docs)
+//     });
+// }
 //查询所有记录的部分字段
 exports.getPartOfRecords = function (sort, page_index, page_size, callBack) {
-    var query = recordDao.find({});
-    query.select('_id basicInfo.name basicInfo.gender basicInfo.age basicInfo.telephone basicInfo.cellphone1 basicInfo.cellphone2 basicInfo.medicalCardNum basicInfo.idNum basicInfo.admissionNum basicInfo.bedNum basicInfo.doctor');
-    query.sort(sort);
-    query.skip(parseInt(page_index * page_size));
-    query.limit(parseInt(page_size));
-    query.exec(function (err, docs) {
-        callBack(err, docs)
+    let config = [];
+    if (!_.isEmpty(sort)) {
+        config.push({$sort: sort})
+    }
+    config.push({$skip: page_size * page_index});
+    config.push({$limit: page_size});
+    config.push({$project: {
+        name: '$basicInfo.name',
+        gender: '$basicInfo.gender',
+        age: '$basicInfo.age',
+        telephone: '$basicInfo.telephone',
+        cellphone1: '$basicInfo.cellphone1',
+        cellphone2: '$basicInfo.cellphone2',
+        medicalCardNum: '$basicInfo.medicalCardNum',
+        idNum: '$basicInfo.idNum',
+        admissionNum: '$basicInfo.admissionNum',
+        bedNum: '$basicInfo.bedNum',
+        doctor:  '$basicInfo.doctor'
+    }});
+    recordDao.aggregate(config, function (err, docs) {
+        callBack(err, docs);
     });
 }
 
