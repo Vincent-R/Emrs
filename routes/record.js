@@ -92,8 +92,8 @@ router.post('/getRecord', function (req, res, next) {
  * 查询所有病历的部分记录
  */
 router.get('/getPartOfAllRecords', function (req, res, next) {
-    let page_size = req.query.page_size;
-    let page_index = req.query.page_index;
+    let page_size = req.query.per_page;
+    let page_index = req.query.page;
     let totalCount = 0;
     let totalPage = 0;
     let sort = {};
@@ -127,8 +127,8 @@ router.get('/getPartOfAllRecords', function (req, res, next) {
                         });
                     } else {
                         let recordTo = page_index * page_size;
-                        let next = page_index >= totalPage ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page_index=' + (parseInt(page_index) + 1) + '&page_size=' + page_size;
-                        let prev = page_index == 1 ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page_index=' + (page_index - 1) + '&page_size=' + page_size;
+                        let next = page_index >= totalPage ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page=' + (parseInt(page_index) + 1) + '&per_page=' + page_size;
+                        let prev = page_index == 1 ? null : server_url + 'record/getPartOfAllRecords?sort=' + sort_str + '&page=' + (page_index - 1) + '&per_page=' + page_size;
                         res.json({
                             status: true,
                             message: '',
