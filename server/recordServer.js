@@ -75,3 +75,10 @@ exports.getAllRecordsCount = function (callBack) {
         callBack(err, count)
     });
 }
+
+//根据ID删除记录
+exports.deleteRecordById = function (recordId, callBack) {
+    recordDao.findByIdAndRemove(recordId, function (err, res) {
+        callBack(err, res)
+    });
+}

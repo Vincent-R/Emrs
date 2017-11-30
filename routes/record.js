@@ -5,6 +5,7 @@ var moment = require('moment');
 
 var recordServer = require('../server/recordServer');
 var server_url = require('../config').server_url;
+var logger = require('../middlewares/log4js').getMyLogger('uRLog');
 
 /**
  * 添加新的记录
@@ -111,7 +112,7 @@ router.get('/getPartOfAllRecords', function (req, res, next) {
         if (errone) {
             res.json({
                 status: false,
-                message: '获取病历记录失败！',
+                message: '获取病历记录失败!',
                 data: ''
             });
         } else {
@@ -123,7 +124,7 @@ router.get('/getPartOfAllRecords', function (req, res, next) {
                         res.json({
                             status: false,
                             message: '获取病历记录失败！',
-                            data: ''
+                            data: err
                         });
                     } else {
                         let recordTo = page_index * page_size;
@@ -145,6 +146,45 @@ router.get('/getPartOfAllRecords', function (req, res, next) {
             );
         }
     }); 
+});
+
+/**
+ * 更新病历部分
+ */
+router.post('/updateRecord', function (req, res, next) {
+    var newRecord = req.body.record;
+    let timeNow = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+    newRecord.lastUpdateTime = timeNow;
+    let recordId = newRecord._id;
+    delete newRecord._id;
+    delete newRecord._v;
+    recordServer.insertRecord(newRecord, function (err, doc) {
+        if (err) {
+            res.json({
+                status: false,
+                message: '更新失败！',
+                data: err
+            });
+        } else {
+            recordServer.deleteRecordById(recordId, function (errtwo, resp) {
+                if (errtwo) {
+                    //添加日志
+                    logger.error('fail to delete record ' + recordId + ', new record is ' + doc._id);
+                    res.json({
+                        status: false,
+                        message: '删除记录失败！',
+                        data: errtwo
+                    });
+                } else {
+                    res.json({
+                        status: true,
+                        message: '',
+                        data: ''
+                    });
+                }
+            })
+        }
+    })
 });
 
 module.exports = router; 

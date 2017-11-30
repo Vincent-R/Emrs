@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+// var favicon = require('serve-favicon');
+// var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -9,10 +9,12 @@ var cors = require('cors');
 var index = require('./routes/index');
 
 var mongoose = require('./dbConnection');
+var myLogger = require('./middlewares/log4js');
 
 var app = express();
 
 mongoose.connect();
+myLogger.configureMyLog();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +25,7 @@ app.use(cors());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev')); //将请求信息打印至控制台
 //获取post请求的参数时需要这个模块
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
