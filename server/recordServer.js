@@ -61,7 +61,9 @@ exports.getPartOfRecords = function (sort, page_index, page_size, callBack) {
         idNum: '$basicInfo.idNum',
         admissionNum: '$basicInfo.admissionNum',
         bedNum: '$basicInfo.bedNum',
-        doctor:  '$basicInfo.doctor'
+        doctor:  '$basicInfo.doctor',
+        lastUpdateTime: '$lastUpdateTime',
+        createTime: '$createTime'
     }});
     recordDao.aggregate(config, function (err, docs) {
         callBack(err, docs);

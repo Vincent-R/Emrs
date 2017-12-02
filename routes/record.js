@@ -107,6 +107,8 @@ router.get('/getPartOfAllRecords', function (req, res, next) {
             sort_order = -1;
         }
         sort['basicInfo.' + sort_arr[0]] = sort_order;
+    } else {
+        sort['lastUpdateTime'] = -1;
     }
     recordServer.getAllRecordsCount(function (errone, count) {
         if (errone) {
