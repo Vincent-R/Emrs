@@ -143,6 +143,7 @@ var recordSchema = new Schema({
         diabetesMellitusType: SchemaTypes.String,
         isDiabetesMellitusUnderTreatment: SchemaTypes.String,
         diabetesMellitusTreatmentMethod: [SchemaTypes.String],
+        deepVenousThrombosisInducementsOthers: SchemaTypes.String,
         diabetesMellitusOralDrugName: SchemaTypes.String,
         isGout: SchemaTypes.String,
         goutDuration: SchemaTypes.String,
