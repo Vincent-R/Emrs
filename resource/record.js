@@ -133,7 +133,7 @@ var emptyMr = {
         deepVenousThrombosisOnsetTimeYear: "",
         deepVenousThrombosisOnsetTimeMonth: "",
         deepVenousThrombosisInducements: [],
-        deepVenousThrombosisInducementsOthers,        
+        deepVenousThrombosisInducementsOthers: "",        
         deepVenousThrombosisSymptoms: [],
         deepVenousThrombosisDiagnosisResult: "",
         isOldIschemicStroke: "",
