@@ -451,18 +451,33 @@ var recordSchema = new Schema({
                 stSegmentDepression: {
                     isStSegmentDepression: SchemaTypes.String,
                     duration: SchemaTypes.String,
-                    changeDetail: [SchemaTypes.String]
+                    changeDetail: [
+                        {
+                            lead: SchemaTypes.String,
+                            amplitude: SchemaTypes.String
+                        }
+                    ]
                 },
                 stSegmentElevation: {
                     isStSegmentElevation: SchemaTypes.String,
                     duration: SchemaTypes.String,
-                    changeDetail: [SchemaTypes.String]
+                    changeDetail: [
+                        {
+                            lead: SchemaTypes.String,
+                            amplitude: SchemaTypes.String
+                        }
+                    ]
                 }
             },
             tWaveChange: {
                 isTWaveChange: SchemaTypes.String,
                 duration: SchemaTypes.String,
-                changeDetail: [SchemaTypes.String]
+                changeDetail: [
+                    {
+                        lead: SchemaTypes.String,
+                        amplitude: SchemaTypes.String
+                    }
+                ]
             },
             result: SchemaTypes.String,
             findings: SchemaTypes.String
