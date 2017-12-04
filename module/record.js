@@ -475,7 +475,8 @@ var recordSchema = new Schema({
                 changeDetail: [
                     {
                         lead: SchemaTypes.String,
-                        amplitude: SchemaTypes.String
+                        amplitude: SchemaTypes.String,
+                        waveform: SchemaTypes.String
                     }
                 ]
             },
