@@ -23,15 +23,21 @@ var recordSchema = new Schema({
         telephone: SchemaTypes.String,
         gender: SchemaTypes.String,
         nationality: SchemaTypes.String,
-        birthProvince: SchemaTypes.String,
-        birthCity: SchemaTypes.String,
-        birthday: SchemaTypes.String,
+        birthAddress: {
+            province: SchemaTypes.String,
+            city: SchemaTypes.String
+        },
+        birthday: {
+            time: SchemaTypes.String
+        },
         profession: SchemaTypes.String,
-        addressProvince: SchemaTypes.String,
-        addressCity: SchemaTypes.String,
-        addressArea: SchemaTypes.String,
-        addressTown: SchemaTypes.String,
-        address: SchemaTypes.String
+        address: {
+            province: SchemaTypes.String,
+            city: SchemaTypes.String,
+            area: SchemaTypes.String,
+            town: SchemaTypes.String,
+            detail: SchemaTypes.String
+        }
     },
     historyOfPresentIllness: {
         careCauses: [SchemaTypes.String],
