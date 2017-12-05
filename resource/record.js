@@ -13,10 +13,21 @@ var emptyMr = {
         telephone: "",
         gender: "",
         nationality: "",
-        birthAddress: null,
-        birthday: null,
+        birthAddress: {
+            provice: "",
+            city: ""
+        },
+        birthday: {
+            time: ""
+        },
         profession: "",
-        address: null
+        address: {
+            provice: "",
+            city: "",
+            area: "",
+            town: "",
+            detail: ""
+        }
     },
     historyOfPresentIllness: {
         careCauses: [],
