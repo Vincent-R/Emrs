@@ -14,7 +14,7 @@ var emptyMr = {
         gender: "",
         nationality: "",
         birthAddress: {
-            provice: "",
+            province: "",
             city: ""
         },
         birthday: {
@@ -22,7 +22,7 @@ var emptyMr = {
         },
         profession: "",
         address: {
-            provice: "",
+            province: "",
             city: "",
             area: "",
             town: "",
