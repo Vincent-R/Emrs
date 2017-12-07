@@ -19,3 +19,17 @@ exports.insertPrediction = function (prediction, callBack) {
         callBack(err);
     });
 }
+
+exports.getPredictionById = function (id, callBack) {
+    predictionDao.findById(id, function (err, doc) {
+        //err:如果执行没有错误，err为null
+        callBack(err, doc);
+    });
+}
+
+exports.updatePredictionById = function (id, updateDoc, callBack) {
+    predictionDao.findByIdAndUpdate(id, updateDoc, function (err, doc) {
+        //err:如果执行没有错误，err为null
+        callBack(err, doc);
+    });
+}
