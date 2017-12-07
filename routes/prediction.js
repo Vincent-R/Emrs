@@ -54,32 +54,20 @@ router.post('/getAllPredictions', function (req, res, next) {
 router.post('/updatePrediction', function (req, res, next) {
     let predictionId = req.body.predictionId;
     let followUpInfo = req.body.followUpInfo;
-    predictionServer.getPredictionById(predictionId, function (err, doc) {
-        if (err) {
+    let updateDoc = {};
+    updateDoc['followUpInfo'] = followUpInfo;
+    predictionServer.updatePredictionById(predictionId, updateDoc, function (updateErr, updateDoc) {
+        if (updateErr) {
             res.json({
                 status: false,
-                message: '获取失败！',
+                message: '更新失败！',
                 data: ''
             });
         } else {
-            let updateDoc = {};
-            let followUpInfoArray = doc.followUpInfo;
-            followUpInfoArray.push(followUpInfo);
-            updateDoc['followUpInfo'] = followUpInfoArray;
-            predictionServer.updatePredictionById(predictionId, updateDoc, function (updateErr, updateDoc) {
-                if (updateErr) {
-                    res.json({
-                        status: false,
-                        message: '更新失败！',
-                        data: ''
-                    });
-                } else {
-                    res.json({
-                        status: true,
-                        message: '更新成功！',
-                        data: ''
-                    });
-                }
+            res.json({
+                status: true,
+                message: '更新成功！',
+                data: ''
             });
         }
     });
