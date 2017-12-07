@@ -29,25 +29,25 @@ router.post('/insertPrediction', function (req, res, next) {
     })
 });
 
-// /**
-//  * 查询获取所有记录
-//  */
-// router.post('/getAllRecords', function (req, res, next) {
-//     recordServer.getAllRecords(function (err, docs) {
-//         if (err) {
-//             res.json({
-//                 status: false,
-//                 message: '获取病历记录失败！',
-//                 data: ''
-//             });
-//         } else {
-//             res.json({
-//                 status: true,
-//                 message: '',
-//                 data: docs
-//             });
-//         }
-//     });
-// });
+/**
+ * 查询获取所有记录
+ */
+router.post('/getAllPredictions', function (req, res, next) {
+    predictionServer.getAllPrediction(function (err, docs) {
+        if (err) {
+            res.json({
+                status: false,
+                message: '获取失败！',
+                data: ''
+            });
+        } else {
+            res.json({
+                status: true,
+                message: '',
+                data: docs
+            });
+        }
+    });
+});
 
 module.exports = router; 

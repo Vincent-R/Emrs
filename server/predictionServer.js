@@ -6,10 +6,10 @@ var predictionDao = require('../module/prediction');
 /**
  * prediction CRUD
  */
-exports.getPrediction = function (callBack) {
-    predictionDao.findOne({}, function (err, doc) {
+exports.getAllPrediction = function (callBack) {
+    predictionDao.find({}, function (err, docs) {
         //docs:查询到的数据
-        callBack(err, doc);
+        callBack(err, docs);
     });
 }
 
