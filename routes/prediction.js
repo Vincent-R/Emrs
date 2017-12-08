@@ -32,8 +32,11 @@ router.post('/insertPrediction', function (req, res, next) {
 /**
  * 查询获取所有记录
  */
-router.post('/getAllPredictions', function (req, res, next) {
-    predictionServer.getAllPrediction(function (err, docs) {
+router.post('/getAllPredictionsByUserId', function (req, res, next) {
+    let userId = req.body.userId;
+    let conditions = {};
+    conditions['userId'] = userId;
+    predictionServer.getPredictions(conditions, function (err, docs) {
         if (err) {
             res.json({
                 status: false,

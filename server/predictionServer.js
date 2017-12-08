@@ -6,8 +6,8 @@ var predictionDao = require('../module/prediction');
 /**
  * prediction CRUD
  */
-exports.getAllPrediction = function (callBack) {
-    predictionDao.find({}, function (err, docs) {
+exports.getPredictions = function (conditions, callBack) {
+    predictionDao.find(conditions, function (err, docs) {
         //docs:查询到的数据
         callBack(err, docs);
     });
