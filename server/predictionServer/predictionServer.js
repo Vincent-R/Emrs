@@ -1,7 +1,7 @@
 /**
  * 访问prediction对象模型
  */
-var predictionDao = require('../module/prediction');
+var predictionDao = require('../../module/prediction/prediction');
 
 /**
  * prediction CRUD
