@@ -4,6 +4,7 @@ var moment = require('moment');
 
 var predictionServer = require('../server/predictionServer/predictionServer');
 var fRSPredictionServer = require('../server/predictionServer/fRSPredictionServer');
+var cADPredictionServer = require('../server/predictionServer/cADPredictionServer');
 
 /**
  * 添加新的记录
@@ -114,6 +115,59 @@ router.post('/getAllFRSPredictionsByUserId', function (req, res, next) {
     let conditions = {};
     conditions['userId'] = userId;
     fRSPredictionServer.getFRSPredictions(conditions, function (err, docs) {
+        if (err) {
+            res.json({
+                status: false,
+                message: '获取失败！',
+                data: ''
+            });
+        } else {
+            res.json({
+                status: true,
+                message: '',
+                data: docs
+            });
+        }
+    });
+});
+
+
+/**
+ * Coronary Artery Disease
+ */
+/**
+ * 添加新的记录
+ */
+router.post('/insertCADPrediction', function (req, res, next) {
+    var prediction = req.body.prediction;
+    let timeNow = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+    prediction.createTime = timeNow;
+    prediction.lastUpdateTime = timeNow;
+    cADPredictionServer.insertCADPrediction(prediction, function (err, doc) {
+        if (err) {
+            res.json({
+                status: false,
+                message: '添加记录失败！',
+                data: err
+            });
+        } else {
+            res.json({
+                status: true,
+                message: '',
+                data: ''
+            });
+        }
+    })
+});
+
+/**
+ * 查询获取所有记录
+ */
+router.post('/getAllCADPredictionsByUserId', function (req, res, next) {
+    let userId = req.body.userId;
+    let conditions = {};
+    conditions['userId'] = userId;
+    cADPredictionServer.getCADPredictions(conditions, function (err, docs) {
         if (err) {
             res.json({
                 status: false,
