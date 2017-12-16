@@ -14,11 +14,11 @@ var cADPredictionSchema = new Schema({
         phone: SchemaTypes.String,
         address: SchemaTypes.String,
         other: SchemaTypes.String,
-        location: SchemaTypes.Array,
-        characteristic: SchemaTypes.Array,
+        location: [SchemaTypes.String],
+        characteristic: [SchemaTypes.String],
         duration: SchemaTypes.String,
-        precipitationFactors: SchemaTypes.Array,
-        reliefFactors: SchemaTypes.Array,
+        precipitationFactors: [SchemaTypes.String],
+        reliefFactors: [SchemaTypes.String],
         reliefTime: SchemaTypes.String
     },
     resultData:  {
