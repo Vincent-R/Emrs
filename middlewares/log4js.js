@@ -1,6 +1,6 @@
 var log4js = require('log4js');
 var path = require('path');
-var log_path = require('../config').log_path;
+var log_path = require('../config').origin_path;
 
 configureMyLog = function () {
     log4js.configure({

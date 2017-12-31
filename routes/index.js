@@ -6,6 +6,7 @@ var user = require('./user');
 var record = require('./record');
 var emrsIndex = require('./emrsIndex');
 var prediction = require('./prediction');
+var exportRecord = require('./exportRecord');
 
 /* GET home page. */
 // router.get('/', function (req, res, next) {
@@ -21,5 +22,6 @@ router.use('/user', user);
 router.use('/record', record);
 router.use('/index',emrsIndex);
 router.use('/dp',prediction);
+router.use('/export',exportRecord);
 
 module.exports = router;
