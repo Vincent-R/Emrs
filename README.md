@@ -57,3 +57,26 @@ if ( pPrData ) {
 //w:after="0":消除段后间距
 //w:line="240" w:lineRule="auto":行距设为1
 ```
+
+3. docxtable.js
+```
+"w:p": {
+  "@w:rsidR": "00995B51",
+  "@w:rsidRPr": "00722E63",
+  "@w:rsidRDefault": "00995B51",
+  "w:pPr": {
+    "w:spacing": {
+      "@w:after": "0",
+      "@w:line": "240",
+      "@w:lineRule": "auto"
+    },
+    "w:jc": {
+      "@w:val": opts.align || tblOpts.tableAlign || "center"
+    },
+//在上面的代码块中添加了以下代码实现table内去段后间距和调整行距
+    "w:spacing": {
+      "@w:after": "0",
+      "@w:line": "240",
+      "@w:lineRule": "auto"
+    },
+```
