@@ -19,7 +19,7 @@ exports.exportWord = function(callBack) {
             });
 
     var pObj = docx.createP ( { align: 'center' } );// 创建行 设置居中
-    pObj.addText ( '血液透析（滤过）治疗知情同意书', { bold: true,font_face: 'Arial', font_size: 18 });// 添加文字 设置字体样式 加粗 大小
+    pObj.addText ( '血液透析（滤过）治疗知情同意书', { bold: true, font_face: 'Arial', font_size: 18 });// 添加文字 设置字体样式 加粗 大小
 
     var table = [
         [{
@@ -30,8 +30,7 @@ exports.exportWord = function(callBack) {
             cellColWidth: 1000,//列宽
             b:false,//加粗
             sz: '24',//字体大小
-            fontFamily: "SimSun",//字体
-            gridSpan: "0"
+            fontFamily: "SimSun"//字体
           }
         },{
           val: "Title1",
