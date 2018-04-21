@@ -304,9 +304,7 @@ var emptyMr = {
         PAREpinephrine: "",
         PARArachidonicAcid: "",
         PARCollagen: "",
-        PARRistocetin: ""
-    },
-    specialExamination: {
+        PARRistocetin: "",
         ecg: {
             pathologicalQWave: {
                 isPathologicalQWave: "",
@@ -334,7 +332,9 @@ var emptyMr = {
             },
             isResultNormal: "",
             findings: ""
-        },
+        }
+    },
+    specialExamination: {
         exerciseEcg: {
             exerciseDuration: "",
             isExerciseAngina: "",

@@ -394,9 +394,7 @@ var recordSchema = new Schema({
         PAREpinephrine: SchemaTypes.String,
         PARArachidonicAcid: SchemaTypes.String,
         PARCollagen: SchemaTypes.String,
-        PARRistocetin: SchemaTypes.String
-    },
-    specialExamination: {
+        PARRistocetin: SchemaTypes.String,
         ecg: {
             pathologicalQWave: {
                 isPathologicalQWave: SchemaTypes.String,
@@ -440,7 +438,9 @@ var recordSchema = new Schema({
             },
             isResultNormal: SchemaTypes.String,
             findings: SchemaTypes.String
-        },
+        }
+    },
+    specialExamination: {
         exerciseEcg: {
             exerciseDuration: SchemaTypes.String,
             isExerciseAngina: SchemaTypes.String,
